@@ -1,83 +1,84 @@
-# Cybersecurity Awareness Bot
+Cybersecurity Awareness Chatbot
 
-## Programming 2A - PROG6221
+Project Overview
 
-This project is a command-line Cybersecurity Awareness Chatbot developed in C#.
+The Cybersecurity Awareness Chatbot is a C# Windows Forms application that helps users learn about cybersecurity and safer online behaviour.
 
-The purpose of the chatbot is to provide users with basic cybersecurity awareness and simple safety tips.
+Features
 
-## Features
+* Graphical user interface with a chat history and message input.
+* Cybersecurity information about passwords, phishing, scams, privacy and safe browsing.
+* Random cybersecurity tips.
+* Follow-up questions that provide more information about a topic.
+* Memory and recall of the user’s name and favourite topic during the current session.
+* Basic sentiment detection for worried, curious and frustrated users.
+* ASCII art and an optional voice greeting.
+* Basic input validation and error handling.
 
-The chatbot includes:
+Technologies Used
 
-- Voice greeting when the application starts
-- ASCII cybersecurity logo
-- Personalised greeting using the user's name
-- Basic conversation
-- Password safety information
-- Phishing information
-- Safe browsing information
-- Suspicious link information
-- Input validation
-- Default response for unsupported questions
-- Coloured console interface
-- Section headings and borders
-- Exit command
-- Object-oriented code structure
-- Automatic property for the User class
-- GitHub version control
-- GitHub Actions Continuous Integration
+* C#
+* .NET 8 for Windows
+* Windows Forms
+* Visual Studio
+* Git and GitHub
 
-## Project Structure
+How to Run
 
-The project contains the following main files:
+1. Install Visual Studio with the .NET desktop development workload.
+2. Open the project solution in Visual Studio.
+3. Confirm that the project targets net8.0-windows and has Windows Forms enabled.
+4. Build the solution.
+5. Run the application.
 
-- `Program.cs` - Starts the application.
-- `Chatbot.cs` - Controls the main chatbot flow.
-- `User.cs` - Stores user information.
-- `ConsoleUI.cs` - Controls the console design.
-- `VoiceGreeting.cs` - Plays the WAV voice greeting.
-- `CybersecurityResponses.cs` - Contains cybersecurity responses.
-- `ascii-art.txt` - Contains the ASCII art.
-- `welcome.wav` - Recorded voice greeting.
-- `.github/workflows/dotnet.yml` - GitHub Actions CI workflow.
+The ascii-art.txt and welcome.wav files should be included in the project output for the greeting features to work.
 
-## How to Run
+How to Use
 
-1. Open the project in Visual Studio.
-2. Make sure `welcome.wav` is included in the project.
-3. Build the project.
-4. Run the application.
-5. Enter your name.
-6. Ask cybersecurity-related questions.
-7. Type `exit` to close the chatbot.
+Type a question into the message box and select Send, or press Enter.
 
-## Example Questions
+Examples:
 
-The user can ask:
+* How can I create a strong password?
+* What is phishing?
+* Tell me about scams
+* How can I protect my privacy?
+* Give me a cybersecurity tip
+* My name is Alex
+* What is my name?
+* My favourite topic is phishing
+* What is my favourite topic?
+* I'm worried about my online account
+* I'm curious about cybersecurity
+* I'm frustrated because I don't understand
 
-- How are you?
-- What is your purpose?
-- What can I ask you about?
-- How do I protect my password?
-- What is phishing?
-- How can I browse safely?
-- What should I do with a suspicious link?
+Memory
 
-## Voice Greeting
+The chatbot remembers the user’s name and favourite topic while the application is running. This information is stored in memory and is not intended to persist after the application closes.
 
-The application uses a recorded WAV file named:
+Error Handling
 
-`welcome.wav`
+The application checks for empty messages and displays an error response if processing a message fails. The greeting can still display if the optional audio or ASCII art file is unavailable.
 
-The file is played when the application starts.
+Project Structure
 
-## Continuous Integration
+* Program.cs — starts the Windows Forms application.
+* ChatbotForm.cs — creates the graphical interface and handles user input.
+* CybersecurityResponses.cs — contains chatbot responses, tips, memory, follow-up logic and sentiment detection.
+* Chatbot.cs — contains the earlier console chatbot implementation, if retained.
+* ConsoleUI.cs — contains the earlier console interface, if retained.
+* VoiceGreeting.cs — contains the earlier voice greeting implementation, if retained.
+* ascii-art.txt — ASCII greeting artwork.
+* welcome.wav — voice greeting audio.
 
-GitHub Actions is used to automatically build the project when changes are pushed to GitHub.
+Testing
 
-A screenshot of the successful GitHub Actions run should be added below before final submission.
+Test the graphical interface, all main cybersecurity topics, random tips, follow-up questions, name and favourite-topic recall, sentiment responses, empty input and behaviour when optional greeting files are missing.
 
-## Presentation
+Author
 
-An unlisted YouTube video demonstrating the application and explaining the code structure will be added here before submission.
+Student project for PROG6221 Programming 2A.
+
+Disclaimer
+
+This chatbot provides general cybersecurity awareness information for learning purposes. It is not a substitute for professional cybersecurity incident response.

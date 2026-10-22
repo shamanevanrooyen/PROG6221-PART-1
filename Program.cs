@@ -1,18 +1,18 @@
-﻿// Program.cs
-// This is the starting point of the Cybersecurity Awareness Chatbot.
-// The Program class starts the application and calls the chatbot.
+﻿using System;
+using System.Windows.Forms;
 
 namespace CybersecurityAwarenessBot
 {
-    internal class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        [STAThread]
+        static void Main()
         {
-            // Create an object of the Chatbot class.
-            Chatbot chatbot = new Chatbot();
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
 
-            // Start the chatbot application.
-            chatbot.Start();
+            // Open the Cybersecurity Awareness Chatbot window
+            Application.Run(new ChatbotForm());
         }
     }
-} 
+}
