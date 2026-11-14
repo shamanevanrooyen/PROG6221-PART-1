@@ -10,18 +10,28 @@ Features
 * Cybersecurity information about passwords, phishing, scams, privacy and safe browsing.
 * Random cybersecurity tips.
 * Follow-up questions that provide more information about a topic.
-* Memory and recall of the user’s name and favourite topic during the current session.
+* Memory and recall of the userâ€™s name and favourite topic during the current session.
 * Basic sentiment detection for worried, curious and frustrated users.
 * ASCII art and an optional voice greeting.
 * Basic input validation and error handling.
+* Part 3
+
+* MySQL database integration.
+* Task Assistant for creating, viewing, completing and deleting tasks.
+* Cybersecurity quiz with multiple-choice and true/false questions.
+* Natural Language Processing command recognition.
+* Activity log with timestamps.
 
 Technologies Used
 
 * C#
-* .NET 8 for Windows
+* .NET 8
 * Windows Forms
+* MySQL
+* MySQL Workbench
 * Visual Studio
-* Git and GitHub
+
+
 
 How to Run
 
@@ -54,7 +64,7 @@ Examples:
 
 Memory
 
-The chatbot remembers the user’s name and favourite topic while the application is running. This information is stored in memory and is not intended to persist after the application closes.
+The chatbot remembers the userâ€™s name and favourite topic while the application is running. This information is stored in memory and is not intended to persist after the application closes.
 
 Error Handling
 
@@ -62,14 +72,14 @@ The application checks for empty messages and displays an error response if proc
 
 Project Structure
 
-* Program.cs — starts the Windows Forms application.
-* ChatbotForm.cs — creates the graphical interface and handles user input.
-* CybersecurityResponses.cs — contains chatbot responses, tips, memory, follow-up logic and sentiment detection.
-* Chatbot.cs — contains the earlier console chatbot implementation, if retained.
-* ConsoleUI.cs — contains the earlier console interface, if retained.
-* VoiceGreeting.cs — contains the earlier voice greeting implementation, if retained.
-* ascii-art.txt — ASCII greeting artwork.
-* welcome.wav — voice greeting audio.
+* Program.cs â€” starts the Windows Forms application.
+* ChatbotForm.cs â€” creates the graphical interface and handles user input.
+* CybersecurityResponses.cs â€” contains chatbot responses, tips, memory, follow-up logic and sentiment detection.
+* Chatbot.cs â€” contains the earlier console chatbot implementation, if retained.
+* ConsoleUI.cs â€” contains the earlier console interface, if retained.
+* VoiceGreeting.cs â€” contains the earlier voice greeting implementation, if retained.
+* ascii-art.txt â€” ASCII greeting artwork.
+* welcome.wav â€” voice greeting audio.
 
 Testing
 
