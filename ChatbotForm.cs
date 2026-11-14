@@ -110,7 +110,35 @@ namespace CybersecurityAwarenessBot
 
             btnSend.Click += BtnSend_Click;
             btnClear.Click += BtnClear_Click;
+            Button btnTaskAssistant = new Button
+            {
+                Text = "Task Assistant",
+                Dock = DockStyle.Fill,
+                BackColor = Color.FromArgb(40, 130, 90),
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat
+            };
 
+            btnTaskAssistant.Click += (sender, e) =>
+            {
+                TaskAssistantForm taskForm = new TaskAssistantForm();
+                taskForm.ShowDialog();
+
+            };
+            Button btnQuiz = new Button
+            {
+                Text = "Cybersecurity Quiz",
+                Dock = DockStyle.Fill,
+                BackColor = Color.DarkOrange,
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat
+            };
+
+            btnQuiz.Click += (sender, e) =>
+            {
+                QuizForm quiz = new QuizForm();
+                quiz.ShowDialog();
+            };
             txtUserInput.KeyDown += (sender, e) =>
             {
                 if (e.KeyCode == Keys.Enter)
@@ -119,13 +147,27 @@ namespace CybersecurityAwarenessBot
                     SendMessage();
                 }
             };
+            Button btnActivityLog = new Button
+            {
+                Text = "Activity Log",
+                Dock = DockStyle.Fill,
+                BackColor = Color.FromArgb(90, 90, 110),
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat
+            };
+
+            btnActivityLog.Click += (sender, e) =>
+            {
+                ActivityLogForm logForm = new ActivityLogForm();
+                logForm.ShowDialog();
+            };
 
             TableLayoutPanel inputPanel = new TableLayoutPanel
             {
                 Dock = DockStyle.Bottom,
                 Height = 55,
                 Padding = new Padding(8),
-                ColumnCount = 3,
+                ColumnCount = 6,
                 RowCount = 1,
                 BackColor = Color.FromArgb(240, 245, 250)
             };
@@ -136,10 +178,17 @@ namespace CybersecurityAwarenessBot
                 new ColumnStyle(SizeType.Absolute, 90));
             inputPanel.ColumnStyles.Add(
                 new ColumnStyle(SizeType.Absolute, 110));
+            inputPanel.ColumnStyles.Add(
+                new ColumnStyle(SizeType.Absolute, 130));
+            inputPanel.ColumnStyles.Add(
+                new ColumnStyle(SizeType.Absolute, 130));
 
             inputPanel.Controls.Add(txtUserInput, 0, 0);
             inputPanel.Controls.Add(btnSend, 1, 0);
             inputPanel.Controls.Add(btnClear, 2, 0);
+            inputPanel.Controls.Add(btnTaskAssistant, 3, 0);
+            inputPanel.Controls.Add(btnQuiz, 4, 0);
+            inputPanel.Controls.Add(btnQuiz, 5, 0);
 
             Controls.Add(txtChatHistory);
             Controls.Add(inputPanel);
@@ -212,9 +261,48 @@ namespace CybersecurityAwarenessBot
 
             try
             {
-                string response =
-                    CybersecurityResponses.GetResponse(input, userName);
+                string command = NlpHelper.RecognizeCommand(input);
+                string response = "";
+                ActivityLogger.Log("Recognised command: " + command);
 
+                switch (command)
+                {
+                    case "task":
+                    case "reminder":
+                        response = "Opening your Task Assistant.";
+                        TaskAssistantForm taskForm = new TaskAssistantForm();
+                        taskForm.ShowDialog();
+                        break;
+
+                    case "quiz":
+                        response = "Starting your cybersecurity quiz.";
+                        QuizForm quiz = new QuizForm();
+                        quiz.ShowDialog();
+                        break;
+
+                    case "password":
+                        response = "A strong password should be long, unique and difficult to guess. Use a mixture of letters, numbers and symbols.";
+                        break;
+
+                    case "phishing":
+                        response = "Phishing is a scam where criminals try to steal your information through fake emails, messages or websites. Never click suspicious links.";
+                        break;
+
+                    case "help":
+                        response = "You can ask me about passwords, phishing, online safety, create tasks, set reminders, play the cybersecurity quiz or view your activity log.";
+                        break;
+
+                    case "activity":
+                        response = "Here is your recent activity.";
+                        ActivityLogForm logForm = new ActivityLogForm();
+                        logForm.ShowDialog();
+                        break;
+                    
+
+                    default:
+                        response = CybersecurityResponses.GetResponse(input, userName);
+                        break;
+                }
                 txtChatHistory.AppendText(
                     "Bot: " + response +
                     Environment.NewLine + Environment.NewLine);
